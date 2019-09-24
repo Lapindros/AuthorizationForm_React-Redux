@@ -6,6 +6,7 @@ import {Route, BrowserRouter} from 'react-router-dom';
 import './App.less';
 import ButtonComponent from "../form/button/buttonComponent";
 import TextField from "../form/textField/textField";
+import Select from "../form/select/select";
 
 class App extends React.Component {
 
@@ -18,6 +19,7 @@ class App extends React.Component {
             <div className='app-wrapper'>
                 <ButtonComponent />
                 <TextField />
+                <Select />
             </div>
         );
     }
