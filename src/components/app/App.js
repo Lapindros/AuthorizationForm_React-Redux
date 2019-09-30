@@ -7,6 +7,7 @@ import './App.less';
 import ButtonComponent from "../form/button/buttonComponent";
 import TextField from "../form/textField/textField";
 import Select from "../form/select/select";
+import AuthPage from "../../pages/authPage/authPage";
 
 class App extends React.Component {
 
@@ -17,9 +18,7 @@ class App extends React.Component {
     render() {
         return (
             <div className='app-wrapper'>
-                <ButtonComponent />
-                <TextField />
-                <Select />
+                    <AuthPage/>
             </div>
         );
     }
