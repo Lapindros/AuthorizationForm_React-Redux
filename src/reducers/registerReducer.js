@@ -1,10 +1,12 @@
 const initialState = {
-    form: {
+    values: {
+        auth: false,
         name: '',
         email: '',
         age: '',
-        sex: '',
-        password: '',
+        gender: '',
+        education: '',
+        password: ''
     }
 };
 

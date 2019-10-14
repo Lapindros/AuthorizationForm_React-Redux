@@ -1,13 +1,18 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { Provider} from 'react-redux';
 import PropTypes from 'prop-types';
-import {reduxForm, Field, formValueSelector} from 'redux-form';
-import {Route, BrowserRouter} from 'react-router-dom';
-import './App.less';
-import ButtonComponent from "../form/button/buttonComponent";
-import TextField from "../form/textField/textField";
-import Select from "../form/select/select";
-import AuthPage from "../../pages/authPage/authPage";
+import LoginPage from "../../pages/loginPage/loginPage";
+import RegPage from "../../pages/regPage/regPage";
+import MainPage from "../../pages/mainPage/mainPage";
+import store from "../../createStore";
+import {Router, Route} from 'react-router-dom';
+import { createBrowserHistory } from "history"
+
+import '../../content/less/main.less'
+import {Redirect} from "react-router";
+
+const history = createBrowserHistory();
+
 
 class App extends React.Component {
 
@@ -18,7 +23,13 @@ class App extends React.Component {
     render() {
         return (
             <div className='app-wrapper'>
-                    <AuthPage/>
+                <Provider store={store}>
+                    <Router history={history}>
+                    <Route exact path="/" component={LoginPage} />
+                    <Route path="/register" component={RegPage} />
+                    <Route path="/main" component={MainPage} />
+                    </Router>
+                </Provider>
             </div>
         );
     }

@@ -1,0 +1,71 @@
+@import "../../../../content/less/mixins";
+
+.select {
+  width: 100%;
+  position: relative;
+  margin-bottom: 20px;
+  user-select: none;
+  z-index: 1;
+  &.opened {
+    z-index: 1;
+    .select__block {
+      &:before {
+        transform: rotate(225deg);
+        top: 17px;
+      }
+    }
+    .select__list {
+      transform: scaleY(1);
+    }
+  }
+  &__block {
+    height: 35px;
+    width: 100%;
+    padding: 0 15px;
+    background-color: white;
+    line-height: 35px;
+    border-radius: @borderRadius;
+    box-shadow: @boxShadow2;
+    cursor: pointer;
+    &:before {
+      content: '';
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      top: 10px;
+      right: 20px;
+      border: 2px solid transparent;
+      border-right-color: black;
+      border-bottom-color: black;
+      transform: rotate(45deg);
+      transition: all 0.2s ease-out;
+      transform-origin: center;
+    }
+  }
+  &__list {
+    transform: scaleY(0);
+    transform-origin: top center;
+    transition: all 0.2s ease-out;
+    position: absolute;
+    width: 100%;
+    top: calc(~'100% + 2px');
+    left: 0;
+    box-shadow: @boxShadow2;
+    background-color: white;
+    padding: 10px;
+    border-radius: @borderRadius;
+  }
+  &__option {
+    line-height: 30px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: @borderRadius;
+    padding: 0 10px;
+    &.selected {
+      background-color: @formBg;
+      color: white;
+    }
+  }
+
+}
+

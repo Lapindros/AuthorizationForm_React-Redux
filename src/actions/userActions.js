@@ -19,5 +19,5 @@ const register = data =>
 export default {
     login,
     logout,
-    register
+    register,
 };

@@ -2,8 +2,12 @@ import Constants from '../constants/сonstants.js';
 
 const initialState = {
     auth: false,
-    login: '',
     name: '',
+    email: '',
+    age: '',
+    gender: '',
+    education: '',
+    password: ''
 };
 
 const userReducer = (state = initialState, action) => {
@@ -11,6 +15,7 @@ const userReducer = (state = initialState, action) => {
         case Constants.LOGIN: {
             return {
                 ...action.data,
+                auth: true,
             };
         }
         case Constants.LOGOUT: {

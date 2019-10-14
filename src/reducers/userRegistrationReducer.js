@@ -1,21 +1,18 @@
 import Constants from '../constants/сonstants.js';
 
-const initialState = {
-    users: []
-};
+const initialState = [];
 
-const usersReducer = (state = initialState, action) => {
+const userRegistrationReducer = (state = initialState, action) => {
+
     switch (action.type) {
         case Constants.REGISTRATION: {
-            const users = state.users;
+            const users = state;
             users.push(action.data);
-            return {
-                users
-            };
+            return users
         }
         default:
             return state;
     }
 };
 
-export default usersReducer;
+export default userRegistrationReducer;

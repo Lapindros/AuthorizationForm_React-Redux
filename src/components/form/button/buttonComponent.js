@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import './../button/less/buttonComponent.less';
-
 
 class Button extends React.Component {
 
@@ -18,6 +16,8 @@ class Button extends React.Component {
             classDisabled,
             disabled,
             onClick,
+            to,
+            component,
             textButton,
             children,
         } = this.props;
@@ -34,8 +34,7 @@ class Button extends React.Component {
     }
 }
 
-
-Button.PropTypes = {
+Button.propTypes = {
     buttonText: PropTypes.string,
     classModify: PropTypes.array,
     disabled: PropTypes.bool,
