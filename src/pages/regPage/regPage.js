@@ -2,9 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {reduxForm, Field} from 'redux-form';
 import {Link} from 'react-router-dom';
-
 import userActions from "../../actions/userActions";
-
 import RadioButtons from "../../components/form/radioButton/radioButton";
 import Button from "../../components/form/button/buttonComponent";
 import TextField from "../../components/form/textField/textField";
@@ -103,7 +101,6 @@ const form = reduxForm({
 })(RegPage);
 
 const mapStateToProps = state => {
-    // console.log('RegPage', state);
     return {
         users: state.usersRegistration,
     }

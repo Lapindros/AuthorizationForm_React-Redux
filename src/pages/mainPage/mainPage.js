@@ -33,7 +33,6 @@ class MainPage extends React.Component {
 }
 
 const mapStateToProps = state => {
-    // console.log('MainPage', state);
     return {
         user: state.user,
     }

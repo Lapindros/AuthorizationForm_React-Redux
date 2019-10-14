@@ -1,14 +1,9 @@
-import { combineReducers } from 'redux';
-import { reducer as formReducer } from 'redux-form';
+import {combineReducers} from 'redux';
+import {reducer as formReducer} from 'redux-form';
 import userReducer from "./userReducer";
 import userRegistrationReducer from "./userRegistrationReducer";
-import loginReducer from "./loginReducer";
-import registerReducer from "./registerReducer";
 
-const form = formReducer.plugin({
-    // loginForm: loginReducer.form,
-    registerForm: registerReducer.form
-});
+const form = formReducer;
 
 const applicationReducer = combineReducers({
     form,

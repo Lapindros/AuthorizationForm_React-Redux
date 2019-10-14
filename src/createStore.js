@@ -1,7 +1,6 @@
 import {createStore} from 'redux'
 import rootReducer from "./reducers/rootReducer";
 
-
 const saveState = (state) => {
     try {
         // Convert the state to a JSON string

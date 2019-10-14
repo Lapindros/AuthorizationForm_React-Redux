@@ -6,18 +6,22 @@
   margin-bottom: 20px;
   user-select: none;
   z-index: 1;
+
   &.opened {
     z-index: 1;
+
     .select__block {
       &:before {
         transform: rotate(225deg);
         top: 17px;
       }
     }
+
     .select__list {
       transform: scaleY(1);
     }
   }
+
   &__block {
     height: 35px;
     width: 100%;
@@ -27,6 +31,7 @@
     border-radius: @borderRadius;
     box-shadow: @boxShadow2;
     cursor: pointer;
+
     &:before {
       content: '';
       position: absolute;
@@ -42,6 +47,7 @@
       transform-origin: center;
     }
   }
+
   &__list {
     transform: scaleY(0);
     transform-origin: top center;
@@ -55,17 +61,18 @@
     padding: 10px;
     border-radius: @borderRadius;
   }
+
   &__option {
     line-height: 30px;
     height: 30px;
     cursor: pointer;
     border-radius: @borderRadius;
     padding: 0 10px;
+
     &.selected {
       background-color: @formBg;
       color: white;
     }
   }
-
 }
 

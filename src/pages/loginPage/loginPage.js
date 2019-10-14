@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
 import {reduxForm, Field} from 'redux-form';
 import {Link} from 'react-router-dom';
 import Button from "../../components/form/button/buttonComponent";
@@ -71,7 +70,6 @@ const form = reduxForm({
 })(LoginPage);
 
 const mapStateToProps = state => {
-    console.log('loginPage', state);
     return {
         users: state.usersRegistration,
     }
