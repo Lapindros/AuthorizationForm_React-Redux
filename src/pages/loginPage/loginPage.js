@@ -6,6 +6,7 @@ import Button from "../../components/form/button/buttonComponent";
 import TextField from "../../components/form/textField/textField";
 import userActions from "../../actions/userActions";
 import RegPage from "../regPage/regPage";
+import './less/loginPage.less';
 
 const FORM_NAME = "loginForm";
 
@@ -36,30 +37,32 @@ class LoginPage extends React.Component {
     render() {
         const {handleSubmit} = this.props;
         return (
-            <form
-                className='form'
-                onSubmit={handleSubmit(this.submit)}
-                noValidate
-            >
-                <div className='form__title'>Please, login</div>
-                <Field
-                    name="email"
-                    component={TextField}
-                    labeltext="email"
-                    validate={[required, email]}
-                />
-                <Field
-                    name="password"
-                    component={TextField}
-                    labeltext="password"
-                    type="password"
-                    validate={required}
-                />
-                <Button
-                    textButton="LOG-IN"
-                />
-                <Link to="/register" component={RegPage}>to registration</Link>
-            </form>
+            <div className='login-wrapper'>
+                <form
+                    className='form'
+                    onSubmit={handleSubmit(this.submit)}
+                    noValidate
+                >
+                    <div className='form__title'>Please, login</div>
+                    <Field
+                        name="email"
+                        component={TextField}
+                        labeltext="email"
+                        validate={[required, email]}
+                    />
+                    <Field
+                        name="password"
+                        component={TextField}
+                        labeltext="password"
+                        type="password"
+                        validate={required}
+                    />
+                    <Button
+                        textButton="LOG-IN"
+                    />
+                    <Link to="/register" component={RegPage}>to registration</Link>
+                </form>
+            </div>
         );
     }
 }
@@ -70,6 +73,7 @@ const form = reduxForm({
 })(LoginPage);
 
 const mapStateToProps = state => {
+    console.log(state);
     return {
         users: state.usersRegistration,
     }

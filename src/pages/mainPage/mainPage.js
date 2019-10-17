@@ -1,32 +1,54 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import './mainPage.less';
-import Button from "../../components/form/button/buttonComponent";
-import userActions from "../../actions/userActions";
+import Header from "../../components/header/header";
+import TextField from "@material-ui/core/TextField";
 
 class MainPage extends React.Component {
-
-    logout = () => {
-        userActions.logout();
-        this.props.history.push('/');
-    };
 
     render() {
         const {user: {name, email, age, gender, education}} = this.props;
 
         return (
-            <div className='form'>
-                <div className='form__title'>Hello, {name}</div>
-                <div className='main-content'>
-                    <span>Возраст: {age}</span>
-                    <span>Пол: {gender}</span>
-                    <span>Email: {email}</span>
-                    <span>Образование: {education}</span>
-                </div>
-                <Button
-                    onClick={this.logout}
-                    textButton="logout"
+            <div className='main-page'>
+                <Header
+                    personName={name}
                 />
+                <div className='content'>
+                    <div className='content__title'>Личная информация</div>
+
+                    <TextField
+                        disabled
+                        id="outlined-name"
+                        label="Age"
+                        value={age}
+                        variant="outlined"
+                    />
+                    <TextField
+                        disabled
+                        id="outlined-name"
+                        label="Gender"
+                        value={gender}
+                        variant="outlined"
+                        margin='normal'
+                    />
+                    <TextField
+                        disabled
+                        id="outlined-name"
+                        label="Email"
+                        value={email}
+                        variant="outlined"
+                        margin='normal'
+                    />
+                    <TextField
+                        disabled
+                        id="outlined-name"
+                        label="Education"
+                        value={education}
+                        variant="outlined"
+                        margin='normal'
+                    />
+                </div>
             </div>
         );
     }

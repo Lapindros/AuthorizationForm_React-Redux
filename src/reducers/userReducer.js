@@ -11,8 +11,10 @@ const initialState = {
 };
 
 const userReducer = (state = initialState, action) => {
+
     switch (action.type) {
         case Constants.LOGIN: {
+
             return {
                 ...action.data,
                 auth: true,

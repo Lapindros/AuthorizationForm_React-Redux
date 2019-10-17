@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OrgSeizures xmlns:int="http://bssys.com/sbns/integration">
+  <customerId>594cf3e0-f16d-453d-8e7b-186bb49b91b7</customerId>
+  <accountSeizures>
+     <AccountSeizures>
+      <account>40702810849879878964</account>
+      <bankBic>044525225</bankBic>
+      <seizures>
+        <AccountSeizure>
+          <accountSeizureDate>2018-02-28T05:49:45</accountSeizureDate>
+          <actionSign>1</actionSign>
+          <admissionDate>2004-02-14T21:44:14</admissionDate>
+          <decisionDate>2018-11-01T08:36:46+03:00</decisionDate>
+          <decisionNumCancellation>string</decisionNumCancellation>
+          <decisionNumber>21</decisionNumber>
+          <derestrictionDate>2013-05-22T05:02:49+04:00</derestrictionDate>
+          <ground>Неуплата за электроэнергиюterterterter</ground>
+          <recovererName>ПАО "Газпром-нефтьerterterter"</recovererName>
+          <restrictionOrgName>Прокуратура</restrictionOrgName>
+          <restrictionType>налоговое</restrictionType>
+          <seizureAmount>1000.00</seizureAmount>
+          <seizureAmountAccCurr>1000.00</seizureAmountAccCurr>
+          <seizureCurrCode>810</seizureCurrCode>
+          <seizureISOCode>RUR</seizureISOCode>
+          <seizureWholeAmount>0</seizureWholeAmount>
+        </AccountSeizure>
+      </seizures>
+    </AccountSeizures>
+  </accountSeizures>
+</OrgSeizures>
