@@ -1,11 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {reduxForm, Field} from 'redux-form';
-import {Link} from 'react-router-dom';
 import Button from "../../components/form/button/buttonComponent";
 import TextField from "../../components/form/textField/textField";
 import userActions from "../../actions/userActions";
-import RegPage from "../regPage/regPage";
+import AppActions from "../../actions/appActions";
+import PageConstants from "../../constants/pageConstants";
+import RouterActions from '../../actions/routerActions';
 
 const FORM_NAME = "loginForm";
 
@@ -15,26 +16,34 @@ const email = value =>
     value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ?
         'Invalid email address' : undefined;
 
-class LoginPage extends React.Component {
+class LoginForm extends React.Component {
 
     constructor(props) {
         super(props);
     }
+
+  moveToRegistration = () => {
+    AppActions.changePage({
+      page: PageConstants.PageRegistration,
+    })
+  };
 
     submit = (values) => {
         const {users} = this.props;
         const UserFound = users.find(item => item.email === values.email && item.password === values.password);
         if (UserFound) {
             userActions.login(UserFound);
-            this.props.history.push('/main');
+          RouterActions.move('/main');
         } else {
             if (confirm("Этого пользователя нет в системе, хотите зарегистрироваться?"))
-                this.props.history.push('/register');
+              AppActions.changePage({
+                page: PageConstants.PageRegistration
+              })
         }
     };
 
     render() {
-        const {handleSubmit} = this.props;
+        const {handleSubmit, invalid} = this.props;
         return (
             <form
                 className='form'
@@ -56,9 +65,17 @@ class LoginPage extends React.Component {
                     validate={required}
                 />
                 <Button
-                    textButton="LOG-IN"
+                    text="LOG-IN"
+                    color={invalid ? "secondary" : "success"}
+                    isBlock
+                    disabled={invalid}
                 />
-                <Link to="/register" component={RegPage}>to registration</Link>
+                <Button
+                    text="to registration"
+                    color="link"
+
+                    onClick={this.moveToRegistration}
+                />
             </form>
         );
     }
@@ -67,9 +84,10 @@ class LoginPage extends React.Component {
 const form = reduxForm({
     form: FORM_NAME,
     destroyOnUnmount: true,
-})(LoginPage);
+})(LoginForm);
 
 const mapStateToProps = state => {
+    console.log(state);
     return {
         users: state.usersRegistration,
     }

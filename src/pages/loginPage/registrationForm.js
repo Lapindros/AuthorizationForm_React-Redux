@@ -1,14 +1,15 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {reduxForm, Field} from 'redux-form';
-import {Link} from 'react-router-dom';
 import userActions from "../../actions/userActions";
 import RadioButtons from "../../components/form/radioButton/radioButton";
 import Button from "../../components/form/button/buttonComponent";
 import TextField from "../../components/form/textField/textField";
 import Select from "../../components/form/selectComponent/selectComponent";
-import LoginPage from "../loginPage/loginPage";
+
 import CheckBox from "../../components/form/checkbox/checkbox";
+import PageConstants from "../../constants/pageConstants";
+import AppActions from "../../actions/appActions";
 
 const FORM_NAME = "regForm";
 
@@ -18,7 +19,7 @@ const email = value =>
     value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ?
         'Invalid email address' : undefined;
 
-class RegPage extends React.Component {
+class RegistrationForm extends React.Component {
 
     submit = (values) => {
         const {users} = this.props;
@@ -30,8 +31,14 @@ class RegPage extends React.Component {
         this.props.history.push('/main');
     };
 
+  moveToLogin = () => {
+    AppActions.changePage({
+      page: PageConstants.PageLogin,
+    })
+  };
+
     render() {
-        const {handleSubmit} = this.props;
+        const {handleSubmit, invalid} = this.props;
         return (
             <form
                 className='form'
@@ -87,9 +94,17 @@ class RegPage extends React.Component {
                     validate={required}
                 />
                 <Button
-                    textButton="Register"
+                    text="Register"
+                    color={invalid ? "secondary" : "success"}
+                    isBlock
+                    disabled={invalid}
                 />
-                <Link to="/" component={LoginPage}>Back to Login</Link>
+                <Button
+                  text="to login form"
+                  color="link"
+
+                  onClick={this.moveToLogin}
+                />
             </form>
         );
     }
@@ -98,7 +113,7 @@ class RegPage extends React.Component {
 const form = reduxForm({
     form: FORM_NAME,
     destroyOnUnmount: true,
-})(RegPage);
+})(RegistrationForm);
 
 const mapStateToProps = state => {
     return {

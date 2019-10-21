@@ -1,7 +1,6 @@
 import React from 'react';
 import { Provider} from 'react-redux';
-import LoginPage from "../../pages/loginPage/loginPage";
-import RegPage from "../../pages/regPage/regPage";
+import LoginPage from "../../pages/loginPage";
 import MainPage from "../../pages/mainPage/mainPage";
 import store from "../../createStore";
 import {Router, Route} from 'react-router-dom';
@@ -22,7 +21,6 @@ class App extends React.Component {
                 <Provider store={store}>
                     <Router history={history}>
                     <Route exact path="/" component={LoginPage} />
-                    <Route path="/register" component={RegPage} />
                     <Route path="/main" component={MainPage} />
                     </Router>
                 </Provider>

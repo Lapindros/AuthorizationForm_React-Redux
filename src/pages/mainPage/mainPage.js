@@ -25,7 +25,9 @@ class MainPage extends React.Component {
                 </div>
                 <Button
                     onClick={this.logout}
-                    textButton="logout"
+                    text="logout"
+                    isBlock
+                    color="primary"
                 />
             </div>
         );

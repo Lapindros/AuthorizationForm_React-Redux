@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './../button/less/buttonComponent.less';
+import CssUtils from "../../../utils/cssUtils";
+import {Link} from "react-router-dom";
 
 class Button extends React.Component {
 
@@ -12,37 +14,60 @@ class Button extends React.Component {
     render() {
         const {
             className,
-            classModifiers,
-            classDisabled,
+            color,
+            size,
             disabled,
             onClick,
-            to,
-            component,
-            textButton,
+            text,
             children,
+            isBlock,
+            link,
         } = this.props;
+
+        const buttonClass = CssUtils.mergeClasses(
+          className,
+          color && `${className}-${color}`,
+          size && `${className}-${size}`,
+          isBlock && `${className}-block`,
+        );
+
+        if (link) {
+            return (
+              <Link
+                to={link} className={buttonClass}
+              >
+                {text || children}
+              </Link>
+            );
+        }
 
         return (
             <button
-                className='button'
+                className={buttonClass}
                 onClick={onClick && this.onClickHandler}
                 disabled={disabled}
             >
-                {textButton || children}
+                {text || children}
             </button>
         );
     }
 }
 
 Button.propTypes = {
-    buttonText: PropTypes.string,
-    classModify: PropTypes.array,
+    className: PropTypes.string,
+    text: PropTypes.string,
+    type: PropTypes.string,
+    color: PropTypes.string,
+    size: PropTypes.string,
+    link: PropTypes.string,
+    isBlock: PropTypes.bool,
     disabled: PropTypes.bool,
-    onPick: PropTypes.func,
+    onClick: PropTypes.func,
 };
 
 Button.defaultProps = {
-    className: 'button',
+    className: 'btn',
+
 };
 
 export default Button;
