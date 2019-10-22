@@ -1,5 +1,5 @@
 import Constants from '../constants/сonstants.js';
-import { dispatch } from '../createStore';
+import { dispatch } from '../../createStore';
 
 const login = data =>
     dispatch({

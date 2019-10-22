@@ -1,5 +1,19 @@
-import {createStore} from 'redux'
-import rootReducer from "./reducers/rootReducer";
+import { createStore, applyMiddleware, compose } from 'redux';
+import { routerMiddleware } from 'react-router-redux';
+
+import thunkMiddleware from 'redux-thunk';
+import rootReducer from "./redux/reducers/rootReducer";
+import History from './services/history';
+
+const reduxRouterMiddleware = routerMiddleware(History);
+const middleware = [thunkMiddleware, reduxRouterMiddleware];
+
+const createStoreWithMiddlewares = compose(
+  applyMiddleware(...middleware),
+  window.devToolsExtension ? window.devToolsExtension() : f => f
+)(createStore);
+
+const configureStore = initialState => createStoreWithMiddlewares(rootReducer, initialState);
 
 const saveState = (state) => {
     try {
@@ -13,27 +27,8 @@ const saveState = (state) => {
     }
 };
 
-export const loadState = () => {
-    try {
-        const serializedState = localStorage.getItem('app_state');
-        if (serializedState === null) {
-            return undefined;
-        }
-        return JSON.parse(serializedState);
-    } catch (err) {
-        return undefined;
-    }
-};
+const store = configureStore();
 
-const persistedState = loadState();
-
-/**
- * This is where you create the app store
- */
-const store = createStore(rootReducer, persistedState);
-/**
- * Add a change listener to the store, and invoke our saveState function defined above.
- */
 store.subscribe(() => {
     saveState(store.getState());
 });

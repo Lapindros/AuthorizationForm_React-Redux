@@ -1,10 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import './mainPage.less';
-import Button from "../../components/form/button/buttonComponent";
-import userActions from "../../actions/userActions";
 
-class MainPage extends React.Component {
+import Button from "../../components/form/button/buttonComponent";
+import userActions from "../../redux/actions/userActions";
+
+class Index extends React.Component {
 
     logout = () => {
         userActions.logout();
@@ -40,4 +40,4 @@ const mapStateToProps = state => {
     }
 };
 
-export default connect(mapStateToProps)(MainPage);
+export default connect(mapStateToProps)(Index);

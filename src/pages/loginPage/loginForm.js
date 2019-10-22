@@ -3,10 +3,10 @@ import {connect} from 'react-redux';
 import {reduxForm, Field} from 'redux-form';
 import Button from "../../components/form/button/buttonComponent";
 import TextField from "../../components/form/textField/textField";
-import userActions from "../../actions/userActions";
-import AppActions from "../../actions/appActions";
-import PageConstants from "../../constants/pageConstants";
-import RouterActions from '../../actions/routerActions';
+import userActions from "../../redux/actions/userActions";
+import AppActions from "../../redux/actions/appActions";
+import PageConstants from "../../redux/constants/pageConstants";
+import RouterActions from '../../redux/actions/routerActions';
 
 const FORM_NAME = "loginForm";
 

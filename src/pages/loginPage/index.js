@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import PageConstants from '../../constants/pageConstants';
+import PageConstants from '../../redux/constants/pageConstants';
 import RegistrationForm from "./registrationForm";
 import LoginForm from "./loginForm";
 

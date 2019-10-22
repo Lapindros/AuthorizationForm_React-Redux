@@ -1,15 +1,16 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {reduxForm, Field} from 'redux-form';
-import userActions from "../../actions/userActions";
+import userActions from "../../redux/actions/userActions";
 import RadioButtons from "../../components/form/radioButton/radioButton";
 import Button from "../../components/form/button/buttonComponent";
 import TextField from "../../components/form/textField/textField";
 import Select from "../../components/form/selectComponent/selectComponent";
 
 import CheckBox from "../../components/form/checkbox/checkbox";
-import PageConstants from "../../constants/pageConstants";
-import AppActions from "../../actions/appActions";
+import PageConstants from "../../redux/constants/pageConstants";
+import AppActions from "../../redux/actions/appActions";
+import RouterActions from "../../redux/actions/routerActions";
 
 const FORM_NAME = "regForm";
 
@@ -28,7 +29,7 @@ class RegistrationForm extends React.Component {
         }
         userActions.register(values);
         userActions.login(values);
-        this.props.history.push('/main');
+        RouterActions.move('/main');
     };
 
   moveToLogin = () => {
