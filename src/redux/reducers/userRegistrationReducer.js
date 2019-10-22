@@ -1,6 +1,13 @@
 import Constants from '../constants/сonstants.js';
 
-const initialState = [];
+const initialState = [{
+  name: 'Арсен',
+  email: 'test@bssys.com',
+  age: '34',
+  gender: 'male',
+  education: 'high',
+  password: '123'
+}];
 
 const userRegistrationReducer = (state = initialState, action) => {
 

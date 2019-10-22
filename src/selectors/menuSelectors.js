@@ -19,24 +19,17 @@ function isSamePath(link, locationPath) {
   );
 }
 
-const prepareRoute = (route, currentPath, routes = []) => {
-  const isActive = Boolean(
-    currentPath &&
-      (isSamePath(route.link, currentPath) ||
-        (!route.parent &&
-          routes.find(
-            r => r.parent && r.parent.link === route.link && isSamePath(r.link, currentPath),
-          ))),
-  );
+const prepareRoute = (route, currentPath) => {
+  const isActive = Boolean(currentPath && (isSamePath(route.link, currentPath)));
   return {
     ...route,
     active: isActive,
-    parent: route.parent && prepareRoute(route.parent, isActive && route.parent.link),
+
   };
 };
 
 const mainMenu = createSelector(allRoutesSelector, currentPathSelector, (routes, currentPath) =>
-  routes.map(route => prepareRoute(route, currentPath, routes)),
+  routes.map(route => prepareRoute(route, currentPath, routes)).filter(item => !item.noAuth),
 );
 
 const currentRouteSelector = createSelector(

@@ -22,7 +22,10 @@ class LayoutComponent extends React.Component {
       case LayoutConstants.MAIN_PAGE: {
         return (
           <div className="a">
-            <HeaderComponent user={this.props.user}/>
+            <HeaderComponent
+              user={this.props.user}
+              menu={this.props.menu}
+            />
             <div className="container">
               {children}
             </div>
@@ -56,6 +59,7 @@ function mapStateToProps(state) {
   return {
     currentRoute: MenuSelectors.currentRoute(state),
     user: state.user,
+    menu: MenuSelectors.mainMenu(state),
   };
 }
 

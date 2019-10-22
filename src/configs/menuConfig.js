@@ -21,9 +21,19 @@ const Main = {
   isIndex: false,
 };
 
+const Profile = {
+  path: 'profile',
+  title: "Мой профиль",
+  noAuth: false,
+  type: LayoutConstants.MAIN_PAGE,
+  component: MainPage,
+  isIndex: false,
+};
+
 const RoutesTree = [
   Login,
   Main,
+  Profile,
 ];
 
 const routes = [];
@@ -64,6 +74,7 @@ const mapRouteState = (route, state) => ({
     path: route.path,
     pathRedirect: route.pathRedirect,
     link: getLink(route),
+    title: route.title,
     type: route.type,
     noAuth: route.noAuth,
     isIndex: route.isIndex,

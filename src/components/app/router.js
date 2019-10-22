@@ -7,7 +7,6 @@ import LayoutComponent from './layoutComponent';
 import MenuConfig from '../../configs/menuConfig';
 import RouteUtils from '../../utils/routeUtils';
 import History from '../../services/history';
-import MenuActions from "../../redux/actions/menuActions";
 import '../../content/less/main.less';
 
 class RouterComponent extends React.Component {
@@ -41,10 +40,6 @@ class RouterComponent extends React.Component {
     }
     return null;
   };
-
-  componentDidMount() {
-    MenuActions.initRoutes();
-  }
 
   render() {
     const {routeRoutes} = this.props;
